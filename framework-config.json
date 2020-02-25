@@ -1,0 +1,11 @@
+{
+	"driver": {
+		"browser": "chrome"
+	},
+
+	"test": {
+		"url": "staging-ap.apps.mycommercialexchange.com/login",
+		"login" : "Agency2@onecommercial.com",
+		"password" : "qa123"
+	}
+}
