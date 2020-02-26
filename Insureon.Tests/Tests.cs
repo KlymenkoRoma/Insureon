@@ -12,18 +12,18 @@ namespace Insureon.UITests
     [TestFixture]
     public class Tests : BaseTest
     {
-        //static string[] clientNames = { "testatomk0221201", "testatomk0221202" };
+        static string[] clientNames = { "testatomk0221201", "testatomk0221202" };
 
         [Test]
-        //[TestCaseSource("clientNames")]
-        //[Parallelizable(ParallelScope.Children)]
-        public void Submit_Application()
+        [TestCaseSource("clientNames")]
+        [Parallelizable(ParallelScope.Children)]
+        public void Submit_Application(string client)
         {
             var adminPage = new AgentLoginPage();
             string checkName = adminPage.Login()
                 .NavigateToYourCompanyPage("Accounting & Finance Professionals", "Accounting & Auditing")
                 .AddZipCode("10001")
-                .AddBissnessName()
+                .AddBissnessName(client)
                 .NavigateToYourProtectionPage()
                 .SelectGL()
                 .NavigateToYourInformationPage()
