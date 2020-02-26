@@ -15,7 +15,7 @@ namespace Insureon.PageObjects.UniversallAppPages
         public Element continueButton => WebDriver.FindElement(By.Id("nextBtn"), "Continue button");
         public Element backButton => WebDriver.FindElement(By.Id("backBtn"), "Back button");
         public Element submitButton => WebDriver.FindElement(By.XPath("//button[text()='Submit Application']"), "Submit button");
-        public Elements certificateFooter => WebDriver.FindElements(By.ClassName("certificate"));
+        public Element certificateFooter => WebDriver.FindElement(By.XPath("//div[@class='certificate']"), "Certificate");
 
         public static Randomizer random = new Randomizer();
         public static string currentDate = DateTime.Today.ToString("MMddyy");

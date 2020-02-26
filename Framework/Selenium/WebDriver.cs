@@ -30,6 +30,7 @@ namespace Insureon.Selenium
                 url = $"https://{url}";
             }
 
+            FrameWork.Log.Info(url);
             driver.Navigate().GoToUrl(url);
         }
 
@@ -68,6 +69,7 @@ namespace Insureon.Selenium
 
         public static void Quit()
         {
+            FrameWork.Log.Info("Close Browser");
             driver.Quit();
         }
     }

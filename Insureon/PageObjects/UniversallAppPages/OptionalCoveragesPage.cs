@@ -69,7 +69,7 @@ namespace Insureon.PageObjects.UniversallAppPages
 
         public OptionalCoveragesPage WantAdditionalInsured(string value)
         {
-            WebDriver.WebActions().MoveToElement(certificateFooter.Last()).Perform();
+            WebDriver.WebActions().MoveToElement(certificateFooter).Perform();
             additionalInsured(value).Click();
             return this;
         }

@@ -1,4 +1,6 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions.Internal;
+using OpenQA.Selenium.Internal;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -7,9 +9,10 @@ using System.Text;
 
 namespace Framework.Selenium
 {
-    public class Element : IWebElement
+    public class Element : IWebElement, ILocatable, IWrapsElement
     {
         private readonly IWebElement _element;
+        private readonly ILocatable _locatable;
         public readonly string Name;
         public By FoundBy { get; set; }
 
@@ -18,6 +21,7 @@ namespace Framework.Selenium
         public Element(IWebElement element, string name)
         {
             _element = element;
+            _locatable = element as ILocatable;
             Name = name;
         }
 
@@ -34,6 +38,12 @@ namespace Framework.Selenium
         public Size Size => Current.Size;
 
         public bool Displayed => Current.Displayed;
+
+        public Point LocationOnScreenOnceScrolledIntoView => _locatable.LocationOnScreenOnceScrolledIntoView;
+
+        public ICoordinates Coordinates => _locatable.Coordinates;
+
+        public IWebElement WrappedElement => _element;
 
         public void Clear()
         {

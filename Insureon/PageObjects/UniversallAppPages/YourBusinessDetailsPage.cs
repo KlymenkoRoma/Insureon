@@ -140,7 +140,7 @@ namespace Insureon.PageObjects.UniversallAppPages
 
         public YourBusinessDetailsPage DoSuedClient(string value)
         {
-            WebDriver.WebActions().MoveToElement(certificateFooter.Last()).Perform();
+            WebDriver.WebActions().MoveToElement(certificateFooter).Perform();
             suedClient(value).Click();
             return this;
         }
