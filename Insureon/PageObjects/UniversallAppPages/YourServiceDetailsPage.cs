@@ -1,4 +1,5 @@
-﻿using Insureon.Selenium;
+﻿using Framework.Selenium;
+using Insureon.Selenium;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -10,8 +11,8 @@ namespace Insureon.PageObjects.UniversallAppPages
 {
     public class YourServiceDetailsPage : BaseUniAppPage
     {
-        private IWebElement publicCompanyAudit => WebDriver.FindElement(By.Id("q-31"));
-        private IWebElement otherAudit => WebDriver.FindElement(By.Id("q-32"));
+        private Element publicCompanyAudit => WebDriver.FindElement(By.Id("q-31"), "Public Company Audit");
+        private Element otherAudit => WebDriver.FindElement(By.Id("q-32"), "Other Audit");
 
         public YourServiceDetailsPage()
         {

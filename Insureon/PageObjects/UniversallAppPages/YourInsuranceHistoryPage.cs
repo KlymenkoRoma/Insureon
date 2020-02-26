@@ -1,4 +1,5 @@
-﻿using Insureon.Selenium;
+﻿using Framework.Selenium;
+using Insureon.Selenium;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -10,10 +11,10 @@ namespace Insureon.PageObjects.UniversallAppPages
 {
     public class YourInsuranceHistoryPage : BaseUniAppPage
     {
-        private IWebElement activePolicies(string value) => WebDriver.FindElement(By.XPath($"//div[@id='q-117']/input[@value='{value}']"));
-        private IWebElement reasonNoInsurance(string value) => WebDriver.FindElement(By.XPath($"//div[@id='q-118']/button[text()='{value}']"));
-        private IWebElement hasClaims(string value) => WebDriver.FindElement(By.XPath($"//div[@id='q-145']/input[@value='{value}']"));
-        private IWebElement claimAgainstCompany(string value) => WebDriver.FindElement(By.XPath($"//div[@id='q-153']/input[@value='{value}']"));
+        private Element activePolicies(string value) => WebDriver.FindElement(By.XPath($"//div[@id='q-117']/input[@value='{value}']"), $"Active Policies: {value}");
+        private Element reasonNoInsurance(string value) => WebDriver.FindElement(By.XPath($"//div[@id='q-118']/button[text()='{value}']"), $"Reason No Insurance: {value}");
+        private Element hasClaims(string value) => WebDriver.FindElement(By.XPath($"//div[@id='q-145']/input[@value='{value}']"), $"Has Claims: {value}");
+        private Element claimAgainstCompany(string value) => WebDriver.FindElement(By.XPath($"//div[@id='q-153']/input[@value='{value}']"), $"Claim Against Company: {value}");
 
         public YourInsuranceHistoryPage()
         {

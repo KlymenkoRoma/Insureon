@@ -1,4 +1,5 @@
-﻿using Insureon.Selenium;
+﻿using Framework.Selenium;
+using Insureon.Selenium;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -10,8 +11,8 @@ namespace Insureon.PageObjects.UniversallAppPages
 {
     public class YourGeneralLiabilityDetailsPage : BaseUniAppPage
     {
-        private IWebElement protectData(string value) => WebDriver.FindElement(By.XPath($"//div[@id='q-v-34-v-0-v-1-5']/input[@value='{value}']"));
-        private IWebElement squareFeetOccupy => WebDriver.FindElement(By.Id("q-v-34-v-0-v-1-11"));
+        private Element protectData(string value) => WebDriver.FindElement(By.XPath($"//div[@id='q-v-34-v-0-v-1-5']/input[@value='{value}']"), $"Protect Data: {value}");
+        private Element squareFeetOccupy => WebDriver.FindElement(By.Id("q-v-34-v-0-v-1-11"), "Square Feet Occupy");
 
         public YourGeneralLiabilityDetailsPage()
         {

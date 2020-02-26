@@ -5,19 +5,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Insureon.Selenium;
+using Framework.Selenium;
 
 namespace Insureon.PageObjects.UniversallAppPages
 {
     public class YourProtectionPage : BaseUniAppPage
     {
-        private IWebElement GL => WebDriver.FindElement(By.XPath("//label[text()='General Liability']"));
-        private IWebElement BOP => WebDriver.FindElement(By.XPath("//label[contains(text(), 'Business Owner')]"));
-        private IWebElement InlandMarine => WebDriver.FindElement(By.XPath("//label[text()='Inland Marine']"));
-        private IWebElement Umbrella => WebDriver.FindElement(By.XPath("//label[text()='Umbrella (Excess Liability)']"));
-        private IWebElement NonOwnAuto => WebDriver.FindElement(By.XPath("//label[text()='Hired and Non-owned Auto Liability (coverage for vehicles not titled to your business)']"));
-        private IWebElement CommercialAuto => WebDriver.FindElement(By.XPath("//label[text()='Commercial Auto Liability (for vehicles titled to your business)']"));
-        private IWebElement WC => WebDriver.FindElement(By.XPath("//label[contains(text(), 'Compensation / Employers')]"));
-        private IWebElement ErrorsOmissions => WebDriver.FindElement(By.XPath("//label[text()='Professional Liability / Errors and Omissions']"));
+        private Element GL => WebDriver.FindElement(By.XPath("//label[text()='General Liability']"), "GL");
+        private Element BOP => WebDriver.FindElement(By.XPath("//label[contains(text(), 'Business Owner')]"), "BOP");
+        private Element InlandMarine => WebDriver.FindElement(By.XPath("//label[text()='Inland Marine']"), "Inland Marine");
+        private Element Umbrella => WebDriver.FindElement(By.XPath("//label[text()='Umbrella (Excess Liability)']"), "Umbrella");
+        private Element NonOwnAuto => WebDriver.FindElement(By.XPath("//label[text()='Hired and Non-owned Auto Liability (coverage for vehicles not titled to your business)']"), "Non Own Auto");
+        private Element CommercialAuto => WebDriver.FindElement(By.XPath("//label[text()='Commercial Auto Liability (for vehicles titled to your business)']"), "Commercial Auto");
+        private Element WC => WebDriver.FindElement(By.XPath("//label[contains(text(), 'Compensation / Employers')]"), "WC");
+        private Element ErrorsOmissions => WebDriver.FindElement(By.XPath("//label[text()='Professional Liability / Errors and Omissions']"), "Errors & Omissions");
 
         public YourProtectionPage()
         {

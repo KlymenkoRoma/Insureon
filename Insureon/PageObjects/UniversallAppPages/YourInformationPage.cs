@@ -5,16 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Insureon.Selenium;
+using Framework.Selenium;
 
 namespace Insureon.PageObjects.UniversallAppPages
 {
     public class YourInformationPage : BaseUniAppPage
     {
-        private IWebElement firstName => WebDriver.FindElement(By.XPath("//label[text()='Your first name']//following-sibling::input"));
-        private IWebElement lastName => WebDriver.FindElement(By.XPath("//label[text()='Your last name']//following-sibling::input"));
-        private IWebElement phone => WebDriver.FindElement(By.XPath("//label[text()='Contact Phone Number']//following-sibling::input"));
-        private IWebElement email => WebDriver.FindElement(By.XPath("//label[text()='Email']//following-sibling::input"));
-        private IWebElement coverageStart => WebDriver.FindElement(By.XPath("//span[text()='What date would you like your coverage to start?']//parent::p//following-sibling::div//input"));
+        private Element firstName => WebDriver.FindElement(By.XPath("//label[text()='Your first name']//following-sibling::input"), "First Name");
+        private Element lastName => WebDriver.FindElement(By.XPath("//label[text()='Your last name']//following-sibling::input"), "Last Name");
+        private Element phone => WebDriver.FindElement(By.XPath("//label[text()='Contact Phone Number']//following-sibling::input"), "Phone");
+        private Element email => WebDriver.FindElement(By.XPath("//label[text()='Email']//following-sibling::input"), "Email");
+        private Element coverageStart => WebDriver.FindElement(By.XPath("//span[text()='What date would you like your coverage to start?']//parent::p//following-sibling::div//input"), "Coverage Start");
 
         public YourInformationPage()
         {
