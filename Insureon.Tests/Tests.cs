@@ -21,6 +21,8 @@ namespace Insureon.UITests
         {
             var adminPage = new AgentLoginPage();
             string checkName = adminPage.Login()
+                .NavigateToStartApplicationPage()
+                .GoTo()
                 .NavigateToYourCompanyPage("Accounting & Finance Professionals", "Accounting & Auditing")
                 .AddZipCode("10001")
                 .AddBissnessName(client)
@@ -86,6 +88,18 @@ namespace Insureon.UITests
                 .BusinessName(YourCompanyPage.clientName).Text;
 
             checkName.Should().Be(YourCompanyPage.clientName);
+        }
+
+        [Test]
+        public void Bind_Request()
+        {
+            var adminPage = new AgentLoginPage();
+            adminPage.Login()
+                .NavigateToViewClientsPage()
+                .GoTo()
+                .SearchClient("testatom@k0221202")
+                .NavigateToClientDetailsPage("testatom@k0221202");
+
         }
     }
 }
