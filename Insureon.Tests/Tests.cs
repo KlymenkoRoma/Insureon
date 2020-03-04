@@ -85,7 +85,7 @@ namespace Insureon.UITests
                 .SelectBOP()
                 .NavigateToReviewAndConfirmApplicationPage()
                 .NavigateToClientDetailsPage()
-                .BusinessName(YourCompanyPage.clientName).Text;
+                .businessName(YourCompanyPage.clientName).Text;
 
             checkName.Should().Be(YourCompanyPage.clientName);
         }
@@ -98,8 +98,14 @@ namespace Insureon.UITests
                 .NavigateToViewClientsPage()
                 .GoTo()
                 .SearchClient("testatom@k0221202")
-                .NavigateToClientDetailsPage("testatom@k0221202");
-
+                .NavigateToClientDetailsPage("testatom@k0221202")
+                .SelectQuoteDetails()
+                .SelectQuoteAction("Request Bind")
+                .SubmitQuoteAction()
+                .BindPopup.SelectEffectiveDate()
+                .SelectPaymentPlan("Full Pay")
+                .SelectPaymentMethod("Credit / Debit Card")
+                .SubmitQuoteAction();
         }
     }
 }

@@ -25,6 +25,12 @@ namespace Framework.Selenium
             Name = name;
         }
 
+        public Element(IWebElement element)
+        {
+            _element = element;
+            _locatable = element as ILocatable;
+        }
+
         public string TagName => Current.TagName;
 
         public string Text => Current.Text;
@@ -83,6 +89,7 @@ namespace Framework.Selenium
 
         public void SendKeys(string text)
         {
+            FrameWork.Log.Step($"Insert {Name}");
             Current.SendKeys(text);
         }
 

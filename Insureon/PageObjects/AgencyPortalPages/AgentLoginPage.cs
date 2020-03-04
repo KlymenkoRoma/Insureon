@@ -14,8 +14,8 @@ namespace Insureon.PageObjects.BasePages
 {
     public class AgentLoginPage
     {
-        private Element emailField => WebDriver.FindElement(By.Id("emailAddress"), "Email field");
-        private Element passwordField => WebDriver.FindElement(By.Id("password"), "Password field");
+        private Element emailField => WebDriver.FindElement(By.Id("emailAddress"), "Email Address");
+        private Element passwordField => WebDriver.FindElement(By.Id("password"), "Password");
         private Element logInButton => WebDriver.FindElement(By.Id("LogIn"), "LogIn button");
 
         public AgentLoginPage()

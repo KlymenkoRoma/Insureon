@@ -42,6 +42,14 @@ namespace Insureon.Selenium
             };
         }
 
+        public static Element FindElement(By by)
+        {
+            return new Element(driver.FindElement(by))
+            {
+                FoundBy = by
+            };
+        }
+
         public static Elements FindElements(By by)
         {
             return new Elements(driver.FindElements(by))
