@@ -12,7 +12,7 @@ namespace Insureon.UITests
     [TestFixture]
     public class Tests : BaseTest
     {
-        static string[] clientNames = { "testatomk0221201", "testatomk0221202" };
+        static string[] clientNames = { "testatomk0304201", "testatomk0304202" };
 
         [Test]
         [TestCaseSource("clientNames")]
@@ -97,15 +97,22 @@ namespace Insureon.UITests
             adminPage.Login()
                 .NavigateToViewClientsPage()
                 .GoTo()
-                .SearchClient("testatom@k0221202")
-                .NavigateToClientDetailsPage("testatom@k0221202")
+                .SearchClient("testatomk0304201")
+                .NavigateToClientDetailsPage("testatomk0304201")
                 .SelectQuoteDetails()
                 .SelectQuoteAction("Request Bind")
                 .SubmitQuoteAction()
                 .BindPopup.SelectEffectiveDate()
                 .SelectPaymentPlan("Full Pay")
                 .SelectPaymentMethod("Credit / Debit Card")
-                .SubmitQuoteAction();
+                .SubmitQuoteAction()
+                .AddFirstName()
+                .AddLastName()
+                .AddCardNumber("5555555555554444")
+                .SelectExpirationMonth("5")
+                .SelectExpirationYear("2025")
+                .AddCvvCode("701")
+                .SubmitRequest();
         }
     }
 }

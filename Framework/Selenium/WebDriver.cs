@@ -75,6 +75,16 @@ namespace Insureon.Selenium
             ss.SaveAsFile($"{ssFileName}.png", ScreenshotImageFormat.Png);
         }
 
+        public static void SwitchToIframe(Element element)
+        {
+            driver.SwitchTo().Frame(element);
+        }
+
+        public static void SwitchToMainContent()
+        {
+            driver.SwitchTo().DefaultContent();
+        }
+
         public static void Quit()
         {
             FrameWork.Log.Info("Close Browser");
