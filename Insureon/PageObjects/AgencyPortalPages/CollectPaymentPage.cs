@@ -52,20 +52,19 @@ namespace Insureon.PageObjects.AgencyPortalPages
 
         public CollectPaymentPage SelectExpirationMonth(string action)
         {
-            FrameWork.Log.Step($"Select {expirationMonth.Name}: {action}");
             SetSomeValueFromDropDown(expirationMonth, action);
             return this;
         }
 
         public CollectPaymentPage SelectExpirationYear(string action)
         {
-            FrameWork.Log.Step($"Select {expirationYear.Name}: {action}");
             SetSomeValueFromDropDown(expirationYear, action);
             return this;
         }
 
         private void SetSomeValueFromDropDown(Element dropdown, string action)
         {
+            FrameWork.Log.Step($"Select {dropdown.Name}: {action}");
             SelectElement testElement = new SelectElement(dropdown);
             testElement.SelectByText(action);
         }

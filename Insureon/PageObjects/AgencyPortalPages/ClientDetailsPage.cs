@@ -34,7 +34,6 @@ namespace Insureon.PageObjects.AgencyPortalPages
 
         public ClientDetailsPage SelectQuoteAction(string action)
         {
-            FrameWork.Log.Step($"Select {quoteDetailsActionDrop.Name}: {action}");
             SetSomeValueFromDropDown(quoteDetailsActionDrop, action);
             return this;
         }
@@ -47,6 +46,7 @@ namespace Insureon.PageObjects.AgencyPortalPages
 
         private void SetSomeValueFromDropDown(Element dropdown, string action)
         {
+            FrameWork.Log.Step($"Select {dropdown.Name}: {action}");
             SelectElement testElement = new SelectElement(dropdown);
             testElement.SelectByText(action);
         }
@@ -72,20 +72,19 @@ namespace Insureon.PageObjects.AgencyPortalPages
 
         public SubmitBindRequestPopUp SelectPaymentPlan(string action)
         {
-            FrameWork.Log.Step($"Select {paymentPlan.Name}: {action}");
             SetSomeValueFromDropDown(paymentPlan, action);
             return this;
         }
 
         public SubmitBindRequestPopUp SelectPaymentMethod(string action)
         {
-            FrameWork.Log.Step($"Select {paymentMethod.Name}: {action}");
             SetSomeValueFromDropDown(paymentMethod, action);
             return this;
         }
 
         private void SetSomeValueFromDropDown(Element dropdown, string action)
         {
+            FrameWork.Log.Step($"Select {dropdown.Name}: {action}");
             SelectElement testElement = new SelectElement(dropdown);
             testElement.SelectByText(action);
         }

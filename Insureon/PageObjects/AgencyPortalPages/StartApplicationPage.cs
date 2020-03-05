@@ -12,8 +12,8 @@ namespace Insureon.PageObjects.AgencyPortalPages
 {
     public class StartApplicationPage
     {
-        private Element industry => WebDriver.FindElement(By.XPath("//div[@class='start-app-label']/select[1]"));
-        private Element profession => WebDriver.FindElement(By.XPath("//div[@class='start-app-label']/select[2]"));
+        private Element industry => WebDriver.FindElement(By.XPath("//div[@class='start-app-label']/select[1]"), "Industry");
+        private Element profession => WebDriver.FindElement(By.XPath("//div[@class='start-app-label']/select[2]"), "Profession");
         private Element continueButton => WebDriver.FindElement(By.XPath("//button[text()='Continue']"), "Continue button");
 
         public StartApplicationPage()
@@ -38,7 +38,7 @@ namespace Insureon.PageObjects.AgencyPortalPages
 
         private void SetSomeValueFromDropDown(Element dropdown, string information)
         {
-            FrameWork.Log.Step($"Select {information}");
+            FrameWork.Log.Step($"Select {dropdown.Name}: {information}");
             SelectElement testElement = new SelectElement(dropdown);
             testElement.SelectByText(information);
         }
