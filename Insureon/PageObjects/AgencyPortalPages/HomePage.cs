@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Insureon.Selenium;
 using Framework.Selenium;
 using Insureon.PageObjects.AgencyPortalPages;
+using System.Threading;
 
 namespace Insureon.PageObjects.BasePages
 {
@@ -21,11 +22,13 @@ namespace Insureon.PageObjects.BasePages
 
         public ViewClientsPage NavigateToViewClientsPage()
         {
+            WebDriver.Timeout(15);
             return new ViewClientsPage();
         }
 
         public StartApplicationPage NavigateToStartApplicationPage()
         {
+            WebDriver.Timeout(15);
             return new StartApplicationPage();
         }
     }

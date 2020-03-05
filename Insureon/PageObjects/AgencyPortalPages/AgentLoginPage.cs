@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Framework;
 using Framework.Selenium;
@@ -28,8 +29,9 @@ namespace Insureon.PageObjects.BasePages
             string login = FrameWork.Config.Test.Login;
             string password = FrameWork.Config.Test.Password;
 
+            Thread.Sleep(1000);
             emailField.SendKeys(login);
-            WebDriver.Timeout(25);
+            Thread.Sleep(1000);
             passwordField.SendKeys(password);
 
             logInButton.Click();

@@ -16,8 +16,8 @@ namespace Insureon.PageObjects.AgencyPortalPages
     {
         public Element businessName(string name) => WebDriver.FindElement(By.XPath($"//span[text()='Business Name:']/following-sibling::span[text()='{name}']"));
         public Element viewQuoteDetails => WebDriver.FindElement(By.XPath("//span[text()='Quoted']//ancestor::div[3]//a[text()='View Quote Details']"), "View Quote Details");
-        public Element quoteDetailsActionDrop => WebDriver.FindElement(By.CssSelector("select.quote-actions"));
-        public Element submitButton => WebDriver.FindElement(By.CssSelector("button.submit-quote-action"), "Submit Button");
+        public Element quoteDetailsActionDrop => WebDriver.FindElement(By.CssSelector("select.quote-actions"), "Quote Details Action");
+        public Element submitButton => WebDriver.FindElement(By.CssSelector("button.submit-quote-action"), "Submit button");
 
         public readonly SubmitBindRequestPopUp BindPopup;
 
@@ -34,7 +34,7 @@ namespace Insureon.PageObjects.AgencyPortalPages
 
         public ClientDetailsPage SelectQuoteAction(string action)
         {
-            FrameWork.Log.Step($"Select {action}");
+            FrameWork.Log.Step($"Select {quoteDetailsActionDrop.Name}: {action}");
             SetSomeValueFromDropDown(quoteDetailsActionDrop, action);
             return this;
         }
@@ -72,14 +72,14 @@ namespace Insureon.PageObjects.AgencyPortalPages
 
         public SubmitBindRequestPopUp SelectPaymentPlan(string action)
         {
-            FrameWork.Log.Step($"Select {action}");
+            FrameWork.Log.Step($"Select {paymentPlan.Name}: {action}");
             SetSomeValueFromDropDown(paymentPlan, action);
             return this;
         }
 
         public SubmitBindRequestPopUp SelectPaymentMethod(string action)
         {
-            FrameWork.Log.Step($"Select {action}");
+            FrameWork.Log.Step($"Select {paymentMethod.Name}: {action}");
             SetSomeValueFromDropDown(paymentMethod, action);
             return this;
         }

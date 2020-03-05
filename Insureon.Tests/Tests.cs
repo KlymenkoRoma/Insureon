@@ -12,15 +12,15 @@ namespace Insureon.UITests
     [TestFixture]
     public class Tests : BaseTest
     {
-        static string[] clientNames = { "testatomk0304201", "testatomk0304202" };
+        static string[] clientNames = { "testatomk0404201", "testatomk0404202" };
 
         [Test]
         [TestCaseSource("clientNames")]
         [Parallelizable(ParallelScope.Children)]
         public void Submit_Application(string client)
         {
-            var adminPage = new AgentLoginPage();
-            string checkName = adminPage.Login()
+            var agentPage = new AgentLoginPage();
+            string checkName = agentPage.Login()
                 .NavigateToStartApplicationPage()
                 .GoTo()
                 .NavigateToYourCompanyPage("Accounting & Finance Professionals", "Accounting & Auditing")
@@ -93,12 +93,12 @@ namespace Insureon.UITests
         [Test]
         public void Bind_Request()
         {
-            var adminPage = new AgentLoginPage();
-            adminPage.Login()
+            var agentPage = new AgentLoginPage();
+            string checkBind = agentPage.Login()
                 .NavigateToViewClientsPage()
                 .GoTo()
-                .SearchClient("testatomk0304201")
-                .NavigateToClientDetailsPage("testatomk0304201")
+                .SearchClient("testatom@k0221201")
+                .NavigateToClientDetailsPage("testatom@k0221201")
                 .SelectQuoteDetails()
                 .SelectQuoteAction("Request Bind")
                 .SubmitQuoteAction()
@@ -112,7 +112,10 @@ namespace Insureon.UITests
                 .SelectExpirationMonth("5")
                 .SelectExpirationYear("2025")
                 .AddCvvCode("701")
-                .SubmitRequest();
+                .SubmitRequest()
+                .requestSubmittedText.Text;
+
+            checkBind.Should().Be("Your Bind Request has been submitted.");
         }
     }
 }

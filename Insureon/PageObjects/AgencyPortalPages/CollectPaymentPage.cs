@@ -12,14 +12,16 @@ namespace Insureon.PageObjects.AgencyPortalPages
 {
     public class CollectPaymentPage
     {
-        public Element firstName => WebDriver.FindElement(By.CssSelector("input#firstName"));
-        public Element lastName => WebDriver.FindElement(By.CssSelector("input#lastName"));
+        public Element firstName => WebDriver.FindElement(By.CssSelector("input#firstName"), "First Name");
+        public Element lastName => WebDriver.FindElement(By.CssSelector("input#lastName"), "Last Name");
         public Element iframe => WebDriver.FindElement(By.Id("tx_iframe_tokenExIframeDiv"));
-        public Element cardNumber => WebDriver.FindElement(By.Id("data"));
-        public Element expirationMonth => WebDriver.FindElement(By.CssSelector("select#selectedMonth"));
-        public Element expirationYear => WebDriver.FindElement(By.CssSelector("select#selectedYear"));
-        public Element cvvCode => WebDriver.FindElement(By.CssSelector("input#cvv"));
-        public Element submitButton => WebDriver.FindElement(By.XPath("//button[text()='Submit']"));
+        public Element cardNumber => WebDriver.FindElement(By.Id("data"), "Card Number");
+        public Element expirationMonth => WebDriver.FindElement(By.CssSelector("select#selectedMonth"), "Expiration Month");
+        public Element expirationYear => WebDriver.FindElement(By.CssSelector("select#selectedYear"), "Expiration Year");
+        public Element cvvCode => WebDriver.FindElement(By.CssSelector("input#cvv"), "CVV Code");
+        public Element firstAddress => WebDriver.FindElement(By.CssSelector("label#billing-address-item-label-0"), "First Address");
+        public Element submitButton => WebDriver.FindElement(By.XPath("//button[text()='Submit']"), "Submit button");
+        public Element footer => WebDriver.FindElement(By.CssSelector("footer"));
         public Element requestSubmittedText => WebDriver.FindElement(By.XPath("//p[text()='Your Bind Request has been submitted.']"));
 
         public CollectPaymentPage()
@@ -42,7 +44,7 @@ namespace Insureon.PageObjects.AgencyPortalPages
         public CollectPaymentPage AddCardNumber(string number)
         {
             WebDriver.SwitchToIframe(iframe);
-            Thread.Sleep(3000);
+            Thread.Sleep(2000);
             cardNumber.SendKeys(number);
             WebDriver.SwitchToMainContent();
             return this;
@@ -50,14 +52,14 @@ namespace Insureon.PageObjects.AgencyPortalPages
 
         public CollectPaymentPage SelectExpirationMonth(string action)
         {
-            FrameWork.Log.Step($"Select {action}");
+            FrameWork.Log.Step($"Select {expirationMonth.Name}: {action}");
             SetSomeValueFromDropDown(expirationMonth, action);
             return this;
         }
 
         public CollectPaymentPage SelectExpirationYear(string action)
         {
-            FrameWork.Log.Step($"Select {action}");
+            FrameWork.Log.Step($"Select {expirationYear.Name}: {action}");
             SetSomeValueFromDropDown(expirationYear, action);
             return this;
         }
@@ -76,6 +78,8 @@ namespace Insureon.PageObjects.AgencyPortalPages
 
         public CollectPaymentPage SubmitRequest()
         {
+            firstAddress.Click();
+            WebDriver.WebActions().MoveToElement(footer).Perform();
             submitButton.Click();
             return this;
         }
