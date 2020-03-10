@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using FluentAssertions;
+using Framework.Selenium;
 using Insureon.PageObjects.AgencyPortalPages;
 using Insureon.PageObjects.BasePages;
 using Insureon.PageObjects.UniversallAppPages;
@@ -99,7 +100,7 @@ namespace Insureon.UITests
                 .GoTo()
                 .SearchClient("testatom@k0221201")
                 .NavigateToClientDetailsPage("testatom@k0221201")
-                .SelectQuoteDetails()
+                .SelectQuoteDetails("Quoted")
                 .SelectQuoteAction("Request Bind")
                 .SubmitQuoteAction()
                 .BindPopup.SelectEffectiveDate()
@@ -116,6 +117,24 @@ namespace Insureon.UITests
                 .requestSubmittedText.Text;
 
             checkBind.Should().Be("Your Bind Request has been submitted.");
+        }
+
+        [Test]
+        public void Requote()
+        {
+            var agentPage = new AgentLoginPage();
+            agentPage.Login()
+                .NavigateToViewClientsPage()
+                .GoTo()
+                .SearchClient("testatom@k0221202")
+                .NavigateToClientDetailsPage("testatom@k0221202")
+                .SelectQuoteDetails("Pending Activation")
+                .SelectQuoteAction("Requote")
+                .SelectEffectiveDate()
+                .SubmitQuoteAction();
+
+            Thread.Sleep(90000);
+            new ClientDetailsPage().cardYellowColor.Displayed.Should().BeTrue();
         }
     }
 }

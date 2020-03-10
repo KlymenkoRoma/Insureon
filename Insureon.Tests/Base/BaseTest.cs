@@ -43,7 +43,7 @@ namespace Insureon.UITests
                 FrameWork.Log.Warning("Outcome: " + outcome);
             }
 
-            WebDriver.Quit();
+            //WebDriver.Quit();
         }
 
         //[OneTimeTearDown]

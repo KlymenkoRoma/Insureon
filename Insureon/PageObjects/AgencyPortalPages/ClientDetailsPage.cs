@@ -15,9 +15,11 @@ namespace Insureon.PageObjects.AgencyPortalPages
     public class ClientDetailsPage
     {
         public Element businessName(string name) => WebDriver.FindElement(By.XPath($"//span[text()='Business Name:']/following-sibling::span[text()='{name}']"));
-        public Element viewQuoteDetails => WebDriver.FindElement(By.XPath("//span[text()='Quoted']//ancestor::div[3]//a[text()='View Quote Details']"), "View Quote Details");
+        public Element viewQuoteDetails(string status) => WebDriver.FindElement(By.XPath($"//span[text()='{status}']//ancestor::div[3]//a[text()='View Quote Details']"), "View Quote Details");
         public Element quoteDetailsActionDrop => WebDriver.FindElement(By.CssSelector("select.quote-actions"), "Quote Details Action");
         public Element submitButton => WebDriver.FindElement(By.CssSelector("button.submit-quote-action"), "Submit button");
+        public Element effectiveDate => WebDriver.FindElement(By.XPath("//table//span[text()='Effective Date']/ancestor::td/following-sibling::td//input"), "Effective Date");
+        public Element cardYellowColor => WebDriver.FindElement(By.XPath("//div[contains(@style, 'rgb(255, 249, 231)')]"));
 
         public readonly SubmitBindRequestPopUp BindPopup;
 
@@ -26,9 +28,9 @@ namespace Insureon.PageObjects.AgencyPortalPages
             BindPopup = new SubmitBindRequestPopUp();
         }
 
-        public ClientDetailsPage SelectQuoteDetails()
+        public ClientDetailsPage SelectQuoteDetails(string status)
         {
-            viewQuoteDetails.Click();
+            viewQuoteDetails(status).Click();
             return this;
         }
 
@@ -41,6 +43,14 @@ namespace Insureon.PageObjects.AgencyPortalPages
         public ClientDetailsPage SubmitQuoteAction()
         {
             submitButton.Click();
+            return this;
+        }
+
+        public ClientDetailsPage SelectEffectiveDate()
+        {
+            effectiveDate.SendKeys(Keys.Control + "a");
+            effectiveDate.SendKeys(Keys.Delete);
+            effectiveDate.SendKeys(DateTime.Today.AddDays(30).ToString("MM/dd/yyyy"));
             return this;
         }
 
