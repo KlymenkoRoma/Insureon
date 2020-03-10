@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Insureon.PageObjects.AgencyPortalPages
@@ -40,9 +41,10 @@ namespace Insureon.PageObjects.AgencyPortalPages
             return this;
         }
 
-        public ClientDetailsPage SubmitQuoteAction()
+        public ClientDetailsPage SubmitQuoteAction(int milisec = 0)
         {
             submitButton.Click();
+            Thread.Sleep(milisec);
             return this;
         }
 

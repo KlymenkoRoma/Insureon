@@ -123,7 +123,7 @@ namespace Insureon.UITests
         public void Requote()
         {
             var agentPage = new AgentLoginPage();
-            agentPage.Login()
+            Element newCard = agentPage.Login()
                 .NavigateToViewClientsPage()
                 .GoTo()
                 .SearchClient("testatom@k0221202")
@@ -131,10 +131,10 @@ namespace Insureon.UITests
                 .SelectQuoteDetails("Pending Activation")
                 .SelectQuoteAction("Requote")
                 .SelectEffectiveDate()
-                .SubmitQuoteAction();
+                .SubmitQuoteAction(91000)
+                .cardYellowColor;
 
-            Thread.Sleep(90000);
-            new ClientDetailsPage().cardYellowColor.Displayed.Should().BeTrue();
+            newCard.Displayed.Should().BeTrue();
         }
     }
 }
